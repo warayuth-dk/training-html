@@ -102,7 +102,24 @@
     <h2 id="C4">chapter 4</h2>
     <a href="#C2">jump to chapter</a>
     <!-- ตัว jump ไปหาตัว id ที่ตั้ง  -->
-    <style></style>
+    <input type="text">
+    <button id="A1" onclick="buttonEvent()" style="color: green;">click</button>
+    
+    <h2>Register</h2>
+    <!-- <form action=""> -->
+        <label for="username">
+            username
+        </label>
+        <br><br>
+        <input type="text" id="username">
+        <br><br>
+        <label for="password">
+            password
+        </label><br><br>
+        <input type="password" id="password">
+        <br><br>
+        <input onclick="usernameStock()" style="color: blueviolet ;" type="submit" value="submit">
+    <!-- </form> -->
 
 </div>
 
@@ -111,3 +128,25 @@
 </body>
 
 </html>
+<script>
+    function usernameStock() {
+       var username = document.getElementById("username").value;
+       var password = document.getElementById("password").value;
+       console.log(username,password);
+       console.log(typeof(password));
+        if(username === "dukdik" && password === "123456"){
+            alert("Hello");
+        } 
+        else{
+                alert("fuck you");
+                
+            }
+    }
+    function buttonEvent() {
+        alert("true");
+        // document.getElementById("A1").click();
+        // console.log("click Event buttom html");
+
+        
+    }
+</script>
