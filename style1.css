@@ -35,3 +35,79 @@ body {
     background-color: black;
     color: white;
   }
+  .country {
+    background-color: coral;
+    color: blanchedalmond;
+    border: 5px solid burlywood;
+    margin: 10px;
+    padding: 10px;
+}.table2 {
+    color: black;
+
+}
+
+thead {
+    color: aqua;
+}
+
+tbody {
+    color: blueviolet;
+}
+
+tfoot {
+    color: crimson;
+}
+
+table,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    border: blue solid 1px;
+}
+
+tr:nth-child(even) {
+    background-color: #ddd;
+}
+table {
+    color: black;
+    margin: 20px;
+    padding: 20px;
+}
+
+.th1 {
+    color: brown;
+}
+
+.td1 {
+    border: 2px solid black;
+}
+a:link {
+
+    /* สีของตัวหนังสือ link */
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+
+    background-color: orange;
+    text-decoration: none;
+}
+
+a:hover {
+    color: yellow;
+    /* สีตัวหนังสือตอนเอาเม้าส์ชี้ไปที่ link */
+    background-color: black;
+    text-decoration: underline;
+}
+
+a:active {
+    color: pink;
+    /* สีของตัวหนังสือเมื่อกด links */
+    background-color: darkmagenta;
+    text-decoration: underline;
+}
