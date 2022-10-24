@@ -83,24 +83,32 @@
     <p>Marking up abbreviations can give useful information to browsers, translation systems and search-engines.</p>
     <p><a href="https://www.google.com/" target="_parent">google</a></p>
     <style>
-        a:link {color: red;
+        a:link {
+            color: red;
             /* สีของตัวหนังสือ link */
-        background-color: transparent;
-        text-decoration: none;}
-        a:visited{color: red;
-        background-color: orange;
-        text-decoration: none;}
-        a:hover { color: yellow; 
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: red;
+            background-color: orange;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: yellow;
             /* สีตัวหนังสือตอนเอาเม้าส์ชี้ไปที่ link */
-        background-color: black;
-        text-decoration: underline;}
-        a:active{
+            background-color: black;
+            text-decoration: underline;
+        }
+
+        a:active {
             color: pink;
             /* สีของตัวหนังสือเมื่อกด links */
             background-color: darkmagenta;
             text-decoration: underline;
         }
-
     </style>
     <h6>link color</h6>
     <p>you can chage the default color of links</p>
@@ -111,22 +119,97 @@
     <!-- ตัว jump ไปหาตัว id ที่ตั้ง  -->
     <input type="text">
     <button id="A1" onclick="buttonEvent()" style="color: green;">click</button>
-    
+
     <h2>Register</h2>
     <!-- <form action=""> -->
-        <label for="username">
-            username
-        </label>
-        <br><br>
-        <input type="text" id="username">
-        <br><br>
-        <label for="password">
-            password
-        </label><br><br>
-        <input type="password" id="password">
-        <br><br>
-        <input onclick="usernameStock()" style="color: blueviolet ;" type="submit" value="submit">
+    <label for="username">
+        username
+    </label>
+    <br><br>
+    <input type="text" id="username">
+    <br><br>
+    <label for="password">
+        password
+    </label><br><br>
+    <input type="password" id="password">
+    <br><br>
+    <input onclick="usernameStock()" style="color: blueviolet ;" type="submit" value="submit">
+    <br><br>
     <!-- </form> -->
+
+    <table style="width:100% ;">
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid blue;
+            }
+        </style>
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Renunakhon</td>
+            <td>nakhonphanom</td>
+            <td>thailand</td>
+
+        </tr>
+        <tr>
+            <td>samphao</td>
+            <td>udon</td>
+            <td>thailand</td>
+        </tr>
+    </table>
+
+    <table>
+        <style>
+            thead {
+                color: aqua;
+            }
+
+            tbody {
+                color: blueviolet;
+            }
+
+            tfoot {
+                color: crimson;
+            }
+
+            table,
+            th,
+            td {
+                border: solid 1px;
+            }
+        </style>
+        <h1>The thead,tbody,and tfoot elements - styled with css</h1>
+        <thead>
+            <tr>
+                <th>month</th>
+                <th>saving</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>january</td>
+                <td>1000 bath</td>
+
+            </tr>
+            <tr>
+                <td>february</td>
+                <td>2000 bath</td>
+
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>sum</td>
+                <td>3000 bath</td>
+
+            </tr>
+        </tfoot>
+    </table>
 
 </div>
 
@@ -137,23 +220,23 @@
 </html>
 <script>
     function usernameStock() {
-       var username = document.getElementById("username").value;
-       var password = document.getElementById("password").value;
-       console.log(username,password);
-       console.log(typeof(password));
-        if(username === "dukdik" && password === "123456"){
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        console.log(username, password);
+        console.log(typeof (password));
+        if (username === "dukdik" && password === "123456") {
             alert("Hello");
-        } 
-        else{
-                alert("fuck you");
-                
-            }
+        }
+        else {
+            alert("fuck you");
+
+        }
     }
     function buttonEvent() {
         alert("true");
         // document.getElementById("A1").click();
         // console.log("click Event buttom html");
 
-        
+
     }
 </script>
