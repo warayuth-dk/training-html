@@ -46,32 +46,20 @@ body {
 
 }
 
-thead {
-    color: aqua;
-}
+thead ,
 
-tbody {
-    color: blueviolet;
-}
+tbody ,
 
-tfoot {
-    color: crimson;
-}
+tfoot,
 
 table,
-th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+th 
 
 td {
     border: blue solid 1px;
 }
 
-tr:nth-child(even) {
-    background-color: #ddd;
-}
+tr,
 table {
     color: black;
     margin: 20px;
