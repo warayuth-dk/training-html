@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style1.css"> <!-- tag link for add file  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+    <title>Leaning WEB2</title>
+</head>
+<body>
+    
+    <header class="header">
+        <nav class="navbar navbar-style">
+            <div class="container">
+                <div class="navbar-header">
+
+
+                    <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#micon">
+                        <!-- add 3 ขีด -->
+                        <span class="icon-bar"> </span>
+                        <span class="icon-bar"> </span>
+                        <span class="icon-bar"> </span>
+
+
+
+                    </button>
+
+
+
+                    <a href="index.html">
+
+                        <img src="https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0"
+                            alt="oragne" height="50" width="auto">
+
+                    </a>
+
+                </div>
+                <div class="collapse navbar-collapse " id="micon">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="index.html">หน้าหลัก</a></li>
+                        <li><a href="contactus.html">เกี่ยวกับ</a></li>
+                        <li><a href="">ติดต่อเรา</a></li>
+                        <li><a href="form.html">ลงทะเบียน</a></li>
+                        <button style="margin-top: 6px;" type="button" class="btn btn-primary" onclick="darkMode()">Dark</button>
+                </div>
+
+                </ul>
+               
+
+
+            </div>
+
+        </nav>
+    <h1 align="center">ลงทะเบียน</h1>
+    <form align="center">
+        <div>
+            <label for="firstname">Name</label>
+            <input type="text" name="fname" placeholder="ป้อนชื่อ" required>
+        </div>
+        <div>
+            <label for="surename">Surename</label>
+            <input type="text" name="lname" placeholder="ป้อนนามสกุล" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="E-mail" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="Password" placeholder="Password" required>
+        </div>
+        <div>
+            <label for="age">age</label>
+            <input type="number" name="age" placeholder="age" >
+        </div>
+        <div>
+            <label for="Birthdate">Birthdate</label>
+            <input type="date" name="Birthdate" placeholder="Birthdate" required>
+        </div>
+        <div>
+            <label for="Phonenumber">Phone number</label>
+            <input type="tel" name="Phone number" placeholder="Phone number" required >
+        </div>
+        <div>
+            <label for="">ระดับการศึกษา</label>
+            <select name="edu" id="">
+                <option value="ปริญญาตรี">ปริญญาตรี</option>
+                <option value="ปริญญาโท">ปริญญาโท</option>
+                <option value="ปริญญาเอก" selected>ปริญญาเอก</option>
+            </select>
+            <div>
+                <label for="sex">gender</label>
+                <input type="radio" name="gender">เพศชาย 
+                <input type="radio" name="gender">เพศหญิง
+                <input type="radio" name="gender">กำหนดเอง 
+            </div>
+            <div>
+                <label for="">สิ่งที่ชอบ</label>
+                <input type="checkbox" name="fav">เขียนเว็บ
+                <input type="checkbox" name="fav">สร้างเกมส์
+                <input type="checkbox" name="fav">เล่นเกมส์
+                <input type="checkbox" name="fav">Steamer
+            </div>
+            <div>
+                <label for="upload">แนบไฟล์</label>
+                <input type="file">
+            </div >
+            <div>
+                <label for="website">website</label>
+                <input type="url">
+            </div>
+            <div>
+                <input type="submit" name="submit" value="Enter">
+                <!-- <button type="submit">บันทึกข้อมูล</button> -->
+                <button type="reset">reset</button>
+            </div>
+        </div>
+    </form>
+    
+</body>
+</html>
