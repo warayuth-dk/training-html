@@ -8,9 +8,8 @@
     height: 100vh;
 
 }
-
 .navbar-style {
-    /* box-shadow: 0 5px 10px #efefef; */
+    /* box-shadow: 0 5px 10px #efefef;  */
     text-transform: uppercase;
     background-color: whitesmoke;
 
@@ -28,11 +27,10 @@
 }
 body {
     background-color: white;
-    color: black;
   }
   
   .dark-mode {
-    background-color: black;
+    background-color: #2B2B2B;
     color: white;
   }
   .country {
@@ -89,7 +87,6 @@ a:visited {
 a:hover {
     color: yellow;
     /* สีตัวหนังสือตอนเอาเม้าส์ชี้ไปที่ link */
-    background-color: black;
     text-decoration: underline;
 }
 
@@ -124,3 +121,58 @@ span.psw {
     float: right;
     padding: 16px;
 }
+.big-text{
+    animation:slidein 1.5s;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 30;
+    margin: 20px 0;
+}
+a.btn.btn-first
+{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #FFA400;
+    border-color: #FFA400;
+    border-radius: 20px;
+}
+a.btn:hover
+{
+    color: black;
+}
+
+.interest{
+    animation:slide-right 1.5s ;
+}
+.and{
+    animation: slidein 1.5s;
+}
+h1{
+    animation:slide-right 1.5s;
+    }
+  @keyframes fadeIn{
+    0%{opacity:0;}
+    80%{opacity:0;}
+    100%{opacity:1;}
+    }
+    @keyframes slidein {
+        from {
+          margin-left: 100px;
+          width: 300%;
+        }
+      
+        to {
+          margin-left: 0%;
+          width: 100%;
+        }
+      } 
+      @keyframes slide-right {
+        from {
+           margin-left: -200px;
+        }
+    
+        to {
+           margin-left: 0%;
+        }
+     }
