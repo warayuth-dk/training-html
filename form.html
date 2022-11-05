@@ -17,9 +17,9 @@
 
 
     <header class="header">
-        <nav class="navbar navbar-style">
+        <nav class="navbar navbar-style ">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header navbar-fixed-top">
 
 
                     <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#micon">
@@ -182,3 +182,15 @@
 </body>
 
 </html>
+<style>
+    body{
+        background-color: #D3E0EA;
+    }
+</style>
+<script>
+    if(window.localStorage.getItem("dark-mode") === "true")
+    {
+        darkMode();
+    }
+
+</script>
