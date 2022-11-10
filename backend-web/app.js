@@ -1,8 +1,10 @@
 console.log("abc run project");
 const express = require("express");
+var cors = require('cors')
 const app = express();
 const router = express.Router();
 
+app.use(cors())
 app.get("/", (req, res) => {
   res.send("hello world");
 });

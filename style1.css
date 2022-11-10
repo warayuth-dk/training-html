@@ -39,45 +39,7 @@ body {
     border: 5px solid burlywood;
     margin: 10px;
     padding: 10px;
-}.table2 {
-    color: black;
-
 }
-
-thead ,
-
-tbody ,
-
-tfoot,
-
-table,
-th 
-
-td {
-    border: blue solid 1px;
-}
-
-tr,
-table {
-    color: black;
-    margin: 20px;
-    padding: 20px;
-}
-
-.th1 {
-    color: brown;
-}
-
-.td1 {
-    border: 2px solid black;
-}
-a:link {
-
-    /* สีของตัวหนังสือ link */
-    background-color: transparent;
-    text-decoration: none;
-}
-
 a:visited {
 
     background-color: orange;

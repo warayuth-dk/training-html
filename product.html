@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,92 +18,122 @@
 </head>
 
 <body>
-   
-
     <header class="header">
         <nav class="navbar navbar-style navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-    
+
                     <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#micon">
                         <!-- add 3 ขีด -->
                         <span class="icon-bar"> </span>
                         <span class="icon-bar"> </span>
                         <span class="icon-bar"> </span>
-    
-    
-    
+
+
+
                     </button>
-    
-    
-    
+
+
+
                     <a href="index.html">
-    
+
                         <img src="./img/img1/logo oracle.gif" alt="oragne" height="55" width="auto">
-    
+
                     </a>
-    
+
                 </div>
                 <div class="collapse navbar-collapse " id="micon">
                     <ul class="nav navbar-nav navbar-right">
-    
+
                         <li><a href="index.html">หน้าหลัก</a></li>
                         <li><a href="contactus.html">เกี่ยวกับ</a></li>
                         <li><a href="resume.html">ติดต่อเรา</a></li>
                         <li><a href="form.html">ลงทะเบียน</a></li>
                         <li><a href="login.html">login</a></li>
-                        <li><a href="product.html">Product</a></li>
                         <!-- <button style="margin-top: 6px;" type="button" class="btn btn-primary" onclick="darkMode()">Dark -->
                         <!-- </button> -->
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
-                          </label>
+                        </label>
                 </div>
-    
+
                 </ul>
-    
-    
-    
+
+
+
             </div>
-    
+
         </nav>
+        <br><br><br>
+        <h1>Search your Product</h1>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <br><br><br>
-                    <h1> Contact Me</h1>
+        <input type="number" id="number">
+        <button onclick="seachProduct()" id="search">Find Product By Number</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Device</th>
+                    <th>GPU</th>
+                    <th>CPU</th>
+                    <th>Ram</th>
+                    <th>ssd</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="content">
 
-                    <p class="big-text">My name is Warayuth santhong </p>
-
-
-                    <p style="font-family: 'League Spartan', sans-serif;font-size: 25px;"><span
-                            class="interest">interests in programming include Frontend,Backend</span><br><span
-                            class="and">and Mobile Apps.</span> </p>
-                    <br><br><br><br>
-                    <a class="btn btn-first" href="resume.html"> WATCH RESUME NOW </a>
-                </div>
-                <div class="col-sm-6">
-<br><br><br><br>
-                    <img src="./img/img1/IMG_5630-removebg-preview (2).png" alt="" class="img-responsive">
-
-                </div>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </header>
-
 </body>
+
 </html>
+<script>
+    function seachProduct() {
+
+        var id = document.getElementById('number').value
+        $.ajax({
+            type: "GET",
+
+            url: `http://localhost:3000/cart/${id}`,
+            cache: false,
+            success: function (data) {
+
+                for (let i = 0; i < data.data.length; i++) {
+                    var el = document.getElementById('content');
+                    var content;
+                    var user = "123"
+                    content = ` 
+  
+    <tr>
+      <td>${data.data[i].id}</td>
+        <td>${data.data[i].Device}</td>
+        <td>${data.data[i].gpu}</td>
+        <td>${data.data[i].cpu}</td>
+        <td>${data.data[i].ram}</td>
+        <td>${data.data[i].ssd}</td>
+        <td id="showPrice" class="markColor">${data.data[i].price}</td>
+    </tr>`;
+    el.insertAdjacentHTML('afterbegin', content);
+
+                    if (data.data[i].price > 20000) {
+                        document.getElementById("showPrice").style.backgroundColor = "#fff700"
+                    }
+                    else {
+                        document.getElementById("showPrice").style.backgroundColor = "#FFFFFF"
+                    }
+                }
+            },
+            error: function (data) {},
+        })
+    }
+</script>
 <style>
-    body{
-        background-color: #D3E0EA;
+
+    table,
+    th {
+        border: 1px solid black;
     }
 </style>
-<script>
-    if(window.localStorage.getItem("dark-mode") === "true")
-    {
-        darkMode();
-    }
-
-</script>
