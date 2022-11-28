@@ -1,16 +1,16 @@
-console.log("abc run project");
+console.log("Head");
 const express = require("express");
 var cors = require('cors')
 const app = express();
 const router = express.Router();
+const fetch = ('node-fetch');
 
 app.use(cors())
 app.get("/", (req, res) => {
   res.send("hello world");
 });
 app.get("/sec", (req, res) => {
-  res.status(200).send("pass sec");
-  // res.send("hello world second");
+  res.status(200).send(" this is weather");
 });
 app.get("/product1", (req, res) => {
   res.status(200).send("pass product");
@@ -355,6 +355,7 @@ app.get("/product", (req, res) => {
   });
 });
 router.get('/cart/:id',function(req,res){
+
     console.log(req.params.id,"a");
     let product = { data: [
         {
@@ -711,7 +712,34 @@ router.get('/cart/:id',function(req,res){
      
 
 })
+router.get('/wheather',function(req,res){
+  fetch('https://api.openweathermap.org/data/2.5/weather?lat=17.161738449978607&lon=104.15704850616895&appid=51bfdd411d905f7d33a4be38eccb951c', {
+    method: 'GET', // or 'POST'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+   })
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+   
+  
+res.status(200).json({
+  
+  data : 'wheather'
+  
+
+});
+
+
+
+})
 app.use(router);
+
+
 app.listen(3000, () => {
   console.log(" start listning on http://localhost:3000");
 });
