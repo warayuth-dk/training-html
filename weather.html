@@ -19,91 +19,167 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav class="navbar navbar-style navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#micon">
-                        <!-- add 3 ขีด -->
-                        <span class="icon-bar"> </span>
-                        <span class="icon-bar"> </span>
-                        <span class="icon-bar"> </span>
-
-
-
-                    </button>
-
-
-
-                    <a href="index.html">
-
-                        <img src="./img/img1/logo oracle.gif" alt="oragne" height="55" width="auto">
-
-                    </a>
-
-                </div>
-                <div class="collapse navbar-collapse " id="micon">
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li><a href="index.html">หน้าหลัก</a></li>
-                        <li><a href="contactus.html">เกี่ยวกับ</a></li>
-                        <li><a href="resume.html">ติดต่อเรา</a></li>
-                        <li><a href="form.html">ลงทะเบียน</a></li>
-                        <li><a href="login.html">login</a></li>
-                        <li><a href="product.html">Product</a></li>
-                        <li><a href="weather.html">weather</a></li>
-                        <!-- <button style="margin-top: 6px;" type="button" class="btn btn-primary" onclick="darkMode()">Dark -->
-                        <!-- </button> -->
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                </div>
-                </ul>
-            </div>
-
-        </nav>
+    <header class="weather">
         <div class="container" style="margin-top: 80px;">
-            <div class="card">
-                <div class="row top">
-                    <div class="col-md-5" style="text-align: center;">11/12/2022</div>
-                    <div class="col-md-4">Nakhon Phanom</div>
-                    <div class="col-md-3">rain map</div>
-                </div>
-                <div class="row" style="margin-top: 80px;">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-1 temp">16&deg;</div>
-                    <div class="col-md-4 time"><p>19.54</p><p><b>Friday</b></p><p>cloudy</p></div>
+            <div class="card" style="background-color:white ;">
+                <div class="weather-container">
+                    <div class="row top">
+                        <div class="col-md-5" style="margin-top: 1%;text-align: center;font-size: 4vh;">11/12/2022</div>
+                        <div class="col-md-4" style="margin-top: 1%;text-align: center;font-size: 4vh;">
+                            <p class="location">
+                        </div>
+                        <div class="col-md-3" style="margin-top: 1%;text-align: center;font-size: 4vh;">rain map</div>
+                    </div>
+                    <div style="margin-top: 20px;"></div> 
+                        <div class="row">
+                            <div class="col-xs-5 col-md-6 col-sm-4">
+                                <div class="weather-icon"></div>
+                            </div>
+                            <div class="col-xs-2 col-md-2 col-sm-4 temp">
+                                <p class="temperature-value"></p>
+                            </div>
+                            <div class="col-xs-3 col-md-1 col-sm-4 ">
+                                <p class= "time" id="times"></p>
+                                <p class= "days"id="day"></p>
+                                <div class="temperature-description"></div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
     </header>
 </body>
+
 </html>
 <style>
     .temp {
-        
-    text-align: start;
-    font-size: 18vh;
-    padding: 1vh;
+
+        text-align: start;
+        font-size: 18vh;
+        padding: 1vh;
 
     }
-    .time{
-        
-    text-align: start;
-    font-size: 5vh;
+    .temperature-description{
+        text-align: start;
+        font-size: 5vh;
+        margin-left: 10%; 
+    }
+    .days{
+        text-align: start;
+        font-size: 5vh;
+        margin-left: 10%;   
+    }
+    .time {
+
+        text-align: start;
+        font-size: 5vh;
+        margin-left: 10%;
+
 
     }
-    .card{
-        
-    border: 1vh solid;
-    height: 500px;
+
+    .card {
+
+        border-radius: 20px;
+        height: 500px;
+
+    }
+
+    body {
+        background-color: #D3E0EA;
+    }
+
+    .weather {
+        height: 80px;
+    }
+
+    .weather-icon {
+        margin-left: 40%;
+    }
+    @media only screen and (max-width: 1000px){
+        .weather-icon{
+            margin: 0 100px 0px;
+        }
+        .temp{
+            margin:-40px 100px;
+        }
+        .time{
+            margin: 165px -250px 0;
+            margin-right: 100%;
+        }
+        .days{
+            margin: -48px -60px 0px;
+        }
+        .temperature-description{
+            margin: -100px -210px 0px;
+        }
 
     }
 </style>
 <script>
     const last = moment(document.lastModified, "MM/DD/YYYY");
-const now = moment();
-document.write('The last modified date is: ' + last.format("YYYY-MM-DD") + ' and Date is: ' + now.format("YYYY-MM-DD"));
+    const now = moment().format("HH:mm");
+    const now1 = moment().format('dddd');
+    document.getElementById("times").innerHTML = now;
+    var yourDay = document.getElementById("day").innerHTML = now1;
+
+    const iconElement = document.querySelector(".weather-icon");
+    const tempElement = document.querySelector(".temperature-value ");
+    const descElement = document.querySelector(".temperature-description ");
+    const locationElement = document.querySelector(".location ");
+
+    const weather = {};
+
+    weather.temperature = {
+        unit: "celsius"
+    }
+
+    const KELVIN = 273;
+    const key = "51bfdd411d905f7d33a4be38eccb951c";
+
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(setPosition, showError);
+    } else {
+        notificationElement.style.display = "block";
+        notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
+    }
+    function setPosition(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        getWeather(latitude, longitude);
+    }
+    function showError(error) {
+        notificationElement.style.display = "block";
+        notificationElement.innerHTML = `<p> ${error.message} </p>`;
+    }
+    function getWeather(latitude, longitude) {
+        let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+
+        fetch(api)
+            .then(function (response) {
+                let data = response.json();
+                return data;
+            })
+            .then(function (data) {
+                weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+                weather.description = data.weather[0].description;
+                weather.iconId = data.weather[0].icon;
+                weather.city = data.name;
+                weather.country = data.sys.country;
+            })
+            .then(function () {
+                displayWeather();
+            });
+    }
+
+    function displayWeather() {
+        iconElement.innerHTML = `<img src="icons/${weather.iconId}.png" class="col-sm"/>`;
+        tempElement.innerHTML = `${weather.temperature.value}°`;
+        descElement.innerHTML = weather.description;
+        locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+    }
+    function celsiusToFahrenheit(temperature) {
+        return (temperature * 9 / 5) + 32;
+    }
 </script>
