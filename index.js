@@ -1,22 +1,12 @@
-function darkMode() {
-    var element = document.body;
-    element.classList.toggle("dark-mode");
-    
-    if(element.classList.value === "dark-mode"){
-        localStorage.setItem("dark-mode",true);
-    }
-    else{
-      localStorage.removeItem("dark-mode");
-    }
- }
+
  function usernameStock() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     if (username === "dukdik" && password === "123456") {
-        alert("Hello");
+        alert("Success");
     }
     else {
-        alert("fuck you");
+        alert("fail");
 
     }
 }
@@ -48,15 +38,5 @@ function buttonEvent() {
   },
   error: function (data) {
     alert("false");
-  },
-
-//   var s = document.getElementById(variable);
-        // s.value = "new value";
+  }
 });
-}
-function buttonEvent() {
-    alert("true");
-    // document.getElementById("A1").click();
-
-
-}
