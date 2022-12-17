@@ -11,11 +11,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style1.css">
+    <script src="backend-web/rout/axios.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Product</title>
 </head>
 
@@ -59,63 +61,14 @@
         <h1>Search your Product</h1>
         <input type="number" id="number">
         <button onclick="seachProduct()" id="search">Find Product By Number</button>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Device</th>
-                    <th>GPU</th>
-                    <th>CPU</th>
-                    <th>Ram</th>
-                    <th>ssd</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody id="content">
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="row my-3">
+                
+            </div>
+        </div>
     </header>
 </body>
-
 </html>
-<script>
-    function seachProduct() {
-        var id = document.getElementById('number').value
-        $.ajax({
-            type: "GET",
-            url: `http://localhost:3000/cart/${id}`,
-            cache: false,
-            success: function (data) {
-
-                for (let i = 0; i < data.data.length; i++) {
-                    var el = document.getElementById('content');
-                    var content;
-                    var user = "123"
-                    content = ` 
-  
-    <tr>
-      <td>${data.data[i].id}</td>
-        <td>${data.data[i].Device}</td>
-        <td>${data.data[i].gpu}</td>
-        <td>${data.data[i].cpu}</td>
-        <td>${data.data[i].ram}</td>
-        <td>${data.data[i].ssd}</td>
-        <td id="showPrice" class="markColor">${data.data[i].price}</td>
-    </tr>`;
-                    el.insertAdjacentHTML('afterbegin', content);
-
-                    if (data.data[i].price > 20000) {
-                        document.getElementById("showPrice").style.backgroundColor = "#fff700"
-                    }
-                    else {
-                        document.getElementById("showPrice").style.backgroundColor = "#FFFFFF"
-                    }
-                }
-            },
-            error: function (data) { },
-        })
-    }
-</script>
 <style>
     header {
         background: #fff;
@@ -137,6 +90,9 @@
 </style>
 
 <script>
+    // axios
+
+    // dark mode
     const header = document.querySelector("header"),
         buttom = header.querySelector(".moon-sun")
     buttom.addEventListener("click", () => {
