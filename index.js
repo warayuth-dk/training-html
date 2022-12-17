@@ -4,7 +4,7 @@ const app = express();
 app.get('/', (req, res) => {
   res
     .status(200)
-    .json({"user": "pupan", "password": "1890"})
+    .json({"email": "dukdik_2003@hotmail.com", "password": "123456789er"})
     .end();
 });
  
