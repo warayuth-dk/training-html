@@ -1,11 +1,16 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const path = require('path')
-const router = require('./rout/myRouter')
-
-
-app.use(router);
-app.use(express.static(path.join(__dirname,'../../train1')));
-app.listen(3000, () => {
-  console.log("http://localhost:3000");
+ 
+app.get('/', (req, res) => {
+  res
+    .status(200)
+    .send('Hello server is running')
+    .end();
+});
+ 
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
 });
