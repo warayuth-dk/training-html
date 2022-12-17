@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     .end();
 });
 app.post("/login", (req, res) => {
-  var data = req.body();
+  var data = req.body;
 
   if (data.email === "dukdik_2003@hotmail.com" && data.password === "123456789er") {
     res.status(200).json({ msg: "login sucess", statusCode: 200 });
