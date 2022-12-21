@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     .json({"email": "dukdik_2003@hotmail.com", "password": "123456789er"})
     .end();
 });
-router.get("/cart/:id", function (req, res) {
+app.get("/cart/:id", function (req, res) {
   let product = {
     data: [
       {
