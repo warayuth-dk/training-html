@@ -14,8 +14,7 @@
     <script src="index.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <script src="https://momentjs.com/downloads/moment.js"></script>
-
-    <title>Document</title>
+    <title>weather</title>
 </head>
 
 <body>
@@ -24,26 +23,35 @@
             <div class="card" style="background-color:white ;">
                 <div class="weather-container">
                     <div class="row top">
-                        <div class="col-md-5" style="margin-top: 1%;text-align: center;font-size: 4vh;">11/12/2022</div>
-                        <div class="col-md-4" style="margin-top: 1%;text-align: center;font-size: 4vh;">
-                            <p class="location">
+                        <div class="col-md-2 col-xs-3"></div>
+                        <div class="col-md-3 col-xs-6" id="dmy" style="margin-top: 1%;font-size: 4vh;"></div>
+                        <div class="col-md-5 col-xs-12" style="margin-top: 1%;font-size: 4vh;">
+                            <div class="col-md-1 col-xs-2"></div>
+                            <p class="location"> </p>
                         </div>
-                        <div class="col-md-3" style="margin-top: 1%;text-align: center;font-size: 4vh;">rain map</div>
+                        <div class="col-md-1 col-xs-3"></div>
+                        <div class="col-md-2 col-xs-6" style="margin-top: 1%;font-size: 4vh;">
+                            <div class="col-xs-1"></div>
+                        <p>rain map</p>
                     </div>
-                    <div style="margin-top: 20px;"></div> 
-                        <div class="row">
-                            <div class="col-xs-5 col-md-6 col-sm-4">
-                                <div class="weather-icon"></div>
-                            </div>
-                            <div class="col-xs-2 col-md-2 col-sm-4 temp">
-                                <p class="temperature-value"></p>
-                            </div>
-                            <div class="col-xs-3 col-md-1 col-sm-4 ">
-                                <p class= "time" id="times"></p>
-                                <p class= "days"id="day"></p>
-                                <div class="temperature-description"></div>
-                            </div>
+                    </div>
+                    <div style="margin-top: 20px;"></div>
+                    <div class="row">
+                        <div class="col-md-1 "></div>
+                        <div class="col-md-3 col-xs-1">
+                            <div class="weather-icon"></div>
                         </div>
+                        <div class="col-md-2 col-xs-4"></div>
+                        <div class="col-md-2 col-xs-1 temp">
+                            <p class="temperature-value"></p>
+                        </div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-md-4 col-xs-12 ">
+                            <p class="time" id="times"></p>
+                            <p class="days" id="day"></p>
+                            <div class="temperature-description"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,9 +60,14 @@
 
 </html>
 <style>
-    body{
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    body {
         font-family: 'Jost', sans-serif;
     }
+
     .temp {
 
         text-align: start;
@@ -62,16 +75,19 @@
         padding: 1vh;
 
     }
-    .temperature-description{
+
+    .temperature-description {
         text-align: start;
         font-size: 5vh;
-        margin-left: 10%; 
+        margin-left: 10%;
     }
-    .days{
+
+    .days {
         text-align: start;
         font-size: 5vh;
-        margin-left: 10%;   
+        margin-left: 10%;
     }
+
     .time {
 
         text-align: start;
@@ -84,7 +100,7 @@
     .card {
         box-shadow: 5px 20px 50px #000;
         border-radius: 20px;
-        height: 500px;
+        height: 56.25rem;
 
     }
 
@@ -93,37 +109,26 @@
     }
 
     .weather {
-        height: 80px;
+        height: 80rem;
     }
 
     .weather-icon {
         margin-left: 40%;
     }
-    @media only screen and (max-width: 1000px){
-        .weather-icon{
-            margin: 0 100px 0px;
-        }
-        .temp{
-            margin:-40px 100px;
-        }
-        .time{
-            margin: 165px -250px 0;
-            margin-right: 100%;
-        }
-        .days{
-            margin: -48px -60px 0px;
-        }
-        .temperature-description{
-            margin: -100px -210px 0px;
-        }
-
+    /* row */
+    .row{
+        margin: 0;
+        padding: 0;
     }
 </style>
 <script>
     const last = moment(document.lastModified, "MM/DD/YYYY");
     const now = moment().format("HH:mm");
+    const lastmdy = moment(document.lastModified).format("MM/DD/YYYY")
     const now1 = moment().format('dddd');
+    console.log(document.lastModified);
     document.getElementById("times").innerHTML = now;
+    document.getElementById("dmy").innerHTML = lastmdy;
     var yourDay = document.getElementById("day").innerHTML = now1;
 
     const iconElement = document.querySelector(".weather-icon");
@@ -136,7 +141,7 @@
     weather.temperature = {
         unit: "celsius"
     }
-// https://api.openweathermap.org/data/2.5/weather?lat=17.161738449978607&lon=104.15704850616895&appid=9150ad24beac576d02f5d7124c652d4a
+    // https://api.openweathermap.org/data/2.5/weather?lat=17.161738449978607&lon=104.15704850616895&appid=9150ad24beac576d02f5d7124c652d4a
     const KELVIN = 273;
     const key = "87d2ed38c6f228bea471868f750aaaf9";
 
@@ -177,7 +182,7 @@
     }
 
     function displayWeather() {
-        iconElement.innerHTML = `<img src="icons/${weather.iconId}.png" class="col-sm"/>`;
+        iconElement.innerHTML = `<img src="icons/${weather.iconId}.png "/>`;
         tempElement.innerHTML = `${weather.temperature.value}°`;
         descElement.innerHTML = weather.description;
         locationElement.innerHTML = `${weather.city}, ${weather.country}`;
