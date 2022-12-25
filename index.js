@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const { default: axios } = require('axios');
+const { response } = require('express');
+require('dotenv').config();
+const keyWeather = process.env.SECRET_WEATHER_KEY
 
+app.use(express.json());
 app.use(cors());
 app.get('/', (req, res) => {
   res
@@ -371,7 +376,19 @@ app.post("/login", (req, res) => {
     res.send("usernae or password incorrect");
   }
 });
-
+app.post('/wheather',(req,res)=>{
+  var data = req.body;
+  var appid = keyWeather;
+  axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${data.lat}&lon=${data.lon}&appid=${appid}`) 
+  .then(function (response) {
+    res.status(200).json({data:response.data, statusCode: 200 });
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  
+})
  
 // Start the server
 const PORT = process.env.PORT || 8080;
