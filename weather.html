@@ -20,9 +20,9 @@
     <title>weather</title>
 </head>
 
-<body>
-    <p id="testloading" style="min-height: 100vh; display: grid; place-items: center;">
-    <svg id="loading" class="tea" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+<body id="shadowbody">
+    <p id="loading" style="min-height: 100vh; display: grid; place-items: center;">
+    <svg class="tea" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg"
     >
 
     
@@ -255,8 +255,6 @@ svg.tea #steamR {
     }
 
     .card {
-
-        box-shadow: 5px 20px 50px #000;
         border-radius: 20px;
 
     }
@@ -337,13 +335,12 @@ svg.tea #steamR {
                 console.log(error);
             })
             .then(function () {
-                var x = document.getElementById("testloading");
-               // x.style.background = "red";
+                var x = document.getElementById("loading");
                 x.style.minHeight="0vh"
                 x.style.display="none";
                 x.style.placeItems="false"
-              //  style="min-height: 100vh; display: grid; place-items: center;"
-              //  $("svg").hide(); 
+
+                
 
               
                 $("div").show(); 
