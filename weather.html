@@ -12,8 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
@@ -24,47 +22,198 @@
 
 <body>
     <header class="weather">
-        <div class="container-sm" style="margin-top: 80px;">
-            <div class="card" style="background-color:white ;">
-                <div class="weather-container">
-                    <div class="row top">
-                        <div class="col-sm-2"></div>
-                        <div class="d-flex justify-content-center col-sm-3 " id="dmy" style="margin-top: 1%;font-size: 4vh;"></div>
-                        <div class="d-flex justify-content-center col-sm-5 col-12 location" style="margin-top: 1%;font-size: 4vh;"></div>
-                        <div class="d-flex justify-content-center col-sm-2 col-12" style="margin-top: 1%;font-size: 4vh;">rain map</div>
-                    </div>
-                    <div style="margin-top: 20px;"></div>
-                    <div class="row">
-                        <div class="col-sm-1 "></div>
-                        <div class="d-flex justify-content-center col-sm-3 col-9">
-                            <div class="weather-icon"></div>
-                        </div>
-                        <div class="col-sm-1 col-xs-4"></div>
-                    
-                        <div class="row col-sm-3 col-xs-1 temp">
-                            <div class="col-4"></div>
-                            <p class="d-flex justify-content-center temperature-value"></p>
-                        </div>
-                        <div class="col-sm-3 col-10">
-                            <p class="d-flex justify-content-center col-sm-5 time" id="times"></p>
-                            <p class="d-flex justify-content-center col-sm-6 days" id="day"></p>
-                            <div class="d-flex justify-content-center col-sm-8 temperature-description"></div>
+        <svg id="loading" class="tea" width="37" height="48" viewbox="0 0 37 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M27.0819 17H3.02508C1.91076 17 1.01376 17.9059 1.0485 19.0197C1.15761 22.5177 1.49703 29.7374 2.5 34C4.07125 40.6778 7.18553 44.8868 8.44856 46.3845C8.79051 46.79 9.29799 47 9.82843 47H20.0218C20.639 47 21.2193 46.7159 21.5659 46.2052C22.6765 44.5687 25.2312 40.4282 27.5 34C28.9757 29.8188 29.084 22.4043 29.0441 18.9156C29.0319 17.8436 28.1539 17 27.0819 17Z" stroke="var(--secondary)" stroke-width="2"></path>
+            <path d="M29 23.5C29 23.5 34.5 20.5 35.5 25.4999C36.0986 28.4926 34.2033 31.5383 32 32.8713C29.4555 34.4108 28 34 28 34" stroke="var(--secondary)" stroke-width="2"></path>
+            <path id="teabag" fill="var(--secondary)" fill-rule="evenodd" clip-rule="evenodd" d="M16 25V17H14V25H12C10.3431 25 9 26.3431 9 28V34C9 35.6569 10.3431 37 12 37H18C19.6569 37 21 35.6569 21 34V28C21 26.3431 19.6569 25 18 25H16ZM11 28C11 27.4477 11.4477 27 12 27H18C18.5523 27 19 27.4477 19 28V34C19 34.5523 18.5523 35 18 35H12C11.4477 35 11 34.5523 11 34V28Z"></path>
+            <path id="steamL" d="M17 1C17 1 17 4.5 14 6.5C11 8.5 11 12 11 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="var(--secondary)"></path>
+            <path id="steamR" d="M21 6C21 6 21 8.22727 19 9.5C17 10.7727 17 13 17 13" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+            <div class="container-sm" style="margin-top: 80px;">
+                <div class="card" style="background-color:white ;">
+                    <div class="weather-container">
+                        <div class="row top">
+                            <div class="col-sm-2"></div>
+                            <div class="d-flex justify-content-center col-sm-3 " id="dmy"
+                                style="margin-top: 1%;font-size: 4vh;"></div>
+                            <div class="d-flex justify-content-center col-sm-5 col-12 location"
+                                style="margin-top: 1%;font-size: 4vh;"></div>
+                            <div style="margin-top: 20px;"></div>
+                            <div class="row">
+                                <div class="col-sm-1 "></div>
+                                <div class="d-flex justify-content-center col-sm-3 col-9">
+                                    <div class="weather-icon"></div>
+                                </div>
+                                <div class="col-sm-1 col-6"></div>
+                                <div class="row col-sm-3 col-1 temp">
+                                    <div class="col-4"></div>
+                                    <p class="d-flex justify-content-center temperature-value"></p>
+                                </div>
+                                <div class="col-sm-3 col-10">
+                                    <p class="d-flex justify-content-center col-12 col-sm-5 time" id="times"></p>
+                                    <p class="d-flex justify-content-center col-12 col-sm-6 days" id="day"></p>
+                                    <div class="d-flex justify-content-center col-12 col-sm-7 temperature-description">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </header>
 </body>
 
 </html>
 <style>
+    svg.tea {
+  --secondary: #33406f;
+}
+svg.tea #teabag {
+  transform-origin: top center;
+  transform: rotate(3deg);
+  animation: swing 2s infinite;
+}
+svg.tea #steamL {
+  stroke-dasharray: 13;
+  stroke-dashoffset: 13;
+  animation: steamLarge 2s infinite;
+}
+svg.tea #steamR {
+  stroke-dasharray: 9;
+  stroke-dashoffset: 9;
+  animation: steamSmall 2s infinite;
+}
+@-moz-keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@-webkit-keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@-o-keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes swing {
+  50% {
+    transform: rotate(-3deg);
+  }
+}
+@-moz-keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@-o-keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@keyframes steamLarge {
+  0% {
+    stroke-dashoffset: 13;
+    opacity: 0.6;
+  }
+  100% {
+    stroke-dashoffset: 39;
+    opacity: 0;
+  }
+}
+@-moz-keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+@-o-keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+@keyframes steamSmall {
+  10% {
+    stroke-dashoffset: 9;
+    opacity: 0.6;
+  }
+  80% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 27;
+    opacity: 0;
+  }
+}
+
+    /* temp */
     * {
         padding: 0;
         margin: 0;
     }
 
+    .loading {
+        background-color: red;
+        z-index: 9;
+    }
+
     body {
+        min-height: 100vh;
+  display: grid;
+  place-items: center;
         font-family: 'Jost', sans-serif;
     }
 
@@ -98,39 +247,34 @@
     }
 
     .card {
+
         box-shadow: 5px 20px 50px #000;
         border-radius: 20px;
 
     }
 
-    body {
-        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-    }
 
     .weather {
-        height: 80rem;
+        height: 80px;
     }
 
     .weather-icon {
         margin-left: 40%;
     }
 
-    /* row */
     .row {
         margin: 0;
         padding: 0;
     }
 </style>
 <script>
+    $("svg").show(); 
+            $("div").hide(); 
+    //MM/DD/YYYY
     const last = moment(document.lastModified, "MM/DD/YYYY");
     const now = moment().format("HH:mm");
-    const lastmdy = moment(document.lastModified).format("MM/DD/YYYY")
     const now1 = moment().format('dddd');
-    console.log(document.lastModified);
-    document.getElementById("times").innerHTML = now;
-    document.getElementById("dmy").innerHTML = lastmdy;
-    var yourDay = document.getElementById("day").innerHTML = now1;
-
+    const vardmy = moment().format("DD/MM/YYYY")
     const iconElement = document.querySelector(".weather-icon");
     const tempElement = document.querySelector(".temperature-value ");
     const descElement = document.querySelector(".temperature-description ");
@@ -141,9 +285,8 @@
     weather.temperature = {
         unit: "celsius"
     }
-
+    // https://api.openweathermap.org/data/2.5/weather?lat=17.161738449978607&lon=104.15704850616895&appid=9150ad24beac576d02f5d7124c652d4a
     const KELVIN = 273;
-    const key = "87d2ed38c6f228bea471868f750aaaf9";
 
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(setPosition, showError);
@@ -161,31 +304,47 @@
         notificationElement.style.display = "block";
         notificationElement.innerHTML = `<p> ${error.message} </p>`;
     }
-    function getWeather(latitude, longitude) {
-        let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    async function getWeather(latitude, longitude) {
+        let api = `https://nodejsdw.herokuapp.com/wheather`;
 
-        fetch(api)
+        await axios.post(api, {
+            lat: latitude,
+            lon: longitude
+        })
             .then(function (response) {
-                let data = response.json();
+                let data = response.data.data;
+                console.log(data.data)
                 return data;
+
             })
             .then(function (data) {
+
                 weather.temperature.value = Math.floor(data.main.temp - KELVIN);
                 weather.description = data.weather[0].description;
                 weather.iconId = data.weather[0].icon;
                 weather.city = data.name;
                 weather.country = data.sys.country;
             })
+            .catch(function (error) {
+                console.log(error);
+            })
             .then(function () {
+                var x = document.getElementById("loading");
+                x.style.display = "block";
+                $("svg").hide(); 
+                $("div").show(); 
                 displayWeather();
             });
-    }
 
+    }
     function displayWeather() {
-        iconElement.innerHTML = `<img src="icons/${weather.iconId}.png "/>`;
+        iconElement.innerHTML = `<img src="icons/${weather.iconId}.png" class="col-sm"/>`;
         tempElement.innerHTML = `${weather.temperature.value}°`;
         descElement.innerHTML = weather.description;
         locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+        document.getElementById("times").innerHTML = now;
+        document.getElementById("dmy").innerHTML = vardmy;
+        var yourDay = document.getElementById("day").innerHTML = now1;
     }
     function celsiusToFahrenheit(temperature) {
         return (temperature * 9 / 5) + 32;
